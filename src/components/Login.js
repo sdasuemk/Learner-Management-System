@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { Button, TextField, FormControl, InputLabel, MenuItem, Select, Box, Typography } from '@mui/material';
 
 
@@ -18,11 +19,57 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(inputs)
+    if(inputs.user == 'admin'){
+      axios.post("http://localhost:5050/admin",{
+                    password: inputs.password,
+                    email: inputs.email
+
+                    })
+
+    }
+    if(inputs.user == 'career-team'){
+      axios.post("http://localhost:5050/career-team",{
+                    password: inputs.password,
+                    email: inputs.email
+
+                    })
+      
+    }
+    if(inputs.user == 'faculty'){
+      axios.post("http://localhost:5050/faculty",{
+                    password: inputs.password,
+                    email: inputs.email
+
+                    })
+      
+    }
+    if(inputs.user == 'learners'){
+      axios.post("http://localhost:5050/learners",{
+                    password: inputs.password,
+                    email: inputs.email
+
+                    })
+      
+    }
+/*     axios.post("http://localhost:5050/data",{
+                    user: inputs.user,
+                    password: inputs.password,
+                    email: inputs.email
+
+                    })
+                  .then(function (response) {
+                    console.log(response);
+                    })
+                  .catch(function (error) {
+                    console.log(error);
+                    }); */
   }
   return (
     <>
       <Box>
-        <Typography></Typography>
+        <Typography sx={{margin:'10px', fontWeight:'bold'}}>
+          Sign In
+        </Typography>
       </Box>
       <form onSubmit={handleSubmit}>
       <FormControl sx={{margin:'10px', width: '200px'}}> 
